@@ -137,6 +137,8 @@ class BillingController extends Controller
                 if ($response->successful()) {
                     $data = $response->json();
                     $wifiData = $data['data'] ?? [];
+                } else {
+                    $wifiData = [];
                 }
             }
 
@@ -181,7 +183,15 @@ class BillingController extends Controller
                             $service = $serviceArray;
                         }
                     }
+                } else {
+                    $service = [];
+                    $account_service_id = '';
+                    $account_status_name = '';
                 }
+            } else {
+                $service = [];
+                $account_service_id = '';
+                $account_status_name = '';
             }
         } catch (Exception $e) {
             $service = [];
@@ -1027,7 +1037,9 @@ class BillingController extends Controller
                     $data = $response->json();
                     $wifiData = $data['data'] ?? [];
                 }
-            } 
+            } else {
+                $wifiData = [];
+            }
         } catch (Exception $e) {
             $wifiData = [];
         } 
@@ -1061,7 +1073,8 @@ class BillingController extends Controller
 
                 if ($response->successful()) {
                     $services = $response->json();
-
+                } else {
+                    $services = [];
                 }
 
                 $response_account_info = Http::withHeaders([
@@ -1072,6 +1085,8 @@ class BillingController extends Controller
                 if ($response_account_info->successful()) {
                     $acc_data = $response_account_info->json();
                     $account_service_id = $acc_data['account_service_id'] ?? '';
+                } else {
+                    $account_service_id = '';
                 }
             }
         } catch (Exception $e) {
@@ -1127,5 +1142,10 @@ class BillingController extends Controller
             // dd($e);
             return redirect()->back()->with('error', 'Failed to upgrade service.');
         }
+    }
+
+    public function bundlesIndex(): Factory|View
+    {
+        return view('pages.bundles_warning');
     }
 }

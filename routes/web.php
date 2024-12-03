@@ -132,6 +132,10 @@ Route::middleware('language')->group(function () {
         });
     });
 
+    Route::prefix('bundles')->group(function () {
+        Route::get('/', [BillingController::class, 'bundlesIndex']);
+    });
+
     Route::get('/logout', [AuthenticationController::class, 'logout']);
     Route::post('/language', [LanguageController::class, 'update']);
 
