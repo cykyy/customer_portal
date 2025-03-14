@@ -121,6 +121,9 @@ class BillingController extends Controller
             'password' => $qcore_password,
         ];
 
+        // Initialize service to prevent undefined variable errors
+        $service = [];
+
         try {
             $qcore_response = Http::timeout(10)->post($qcore_uri.'/api/v1/api-token-auth/', $qcore_data);
     
