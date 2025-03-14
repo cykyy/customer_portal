@@ -105,8 +105,9 @@
                            @if(!empty($service))
                               <div class="text-center">
                                  <h4 class="mb-1">{{ $service[0]['name'] }}</h4>
-                                 <h1 class="mb-1 text-secondary">${{ number_format(($service[0]['amount']/100), 2) }}</h1>
+                                 <!-- <h1 class="mb-1 text-secondary">${{ number_format(($service[0]['amount']/100), 2) }}</h1>
                                  <p class="mb-1">Month</p>
+                                 -->
                               </div>
                               <div class="hr-text col-lg-12">Bandwidth</div>
                               <div class="text-center">

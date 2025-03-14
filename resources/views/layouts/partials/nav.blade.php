@@ -53,12 +53,6 @@
                <i class="fe fe-activity"></i> {{utrans("nav.dataUsage")}}</a>
             </li>
             @endif
-            @if(config("customer_portal.contracts_enabled") === true)
-            <li class="nav-item">
-               <a @if(str_contains(Route::getCurrentRoute()->uri(),"contracts")) class="nav-link selected" @else class="nav-link" @endif href="{{action([\App\Http\Controllers\ContractController::class, 'index'])}}">
-               <i class="fe fe-package"></i> {{utrans("nav.contracts")}}</a>
-            </li>
-            @endif
             @if(isset($sidebarData) && $sidebarData['complex'] == 'Sedona')
                <li class="nav-item">
                   <a class="nav-link" href="https://www.directv.com/my-community/">
